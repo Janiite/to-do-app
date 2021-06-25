@@ -1,6 +1,36 @@
 <?php 
+require_once "../components/db.php";
 session_start();
-echo $_SESSION['id'] ;
+
+
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $esql = "SELECT * FROM  tasks  WHERE id = $id";
+    $result = $conn->query($esql);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_array($result);
+        $task = $row['task'];
+      }
+}
+
+if(isset($_POST['update'])) {
+    echo "strādā";
+    $id = $_GET['id'];
+    $task = $_POST['task'];
+    $usql = "UPDATE tasks set task = '$task' WHERE id=$id";
+    $result = $conn->query($usql);
+    if (!$result) {
+        die('error');
+        echo "Nav";
+    } else {
+        
+        header("Location:index.php");
+    }
+   
+    
+}
+
+
 
 ?> 
 
@@ -24,18 +54,17 @@ echo $_SESSION['id'] ;
         <h1>Edit task</h1>
         <div class="newTask">
 
-            <form class="container mt-5">
+            <form action = "" method = "POST" class="container mt-5">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="task">
+                    <input  name = "task" type="text" class="form-control" id="floatingInput" placeholder="task" value = "<?php echo $task; ?>">
                     <label for="floatingInput">Task</label>
                 </div>
 
-                <button type="update" class="btn btn-primary mt-5">Update</button>
+                <button type="submit" name = "update" class="btn btn-primary mt-5">Update</button>
             </form>
         </div>
     </div>
 
 
 </body>
-
 </html>
