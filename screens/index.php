@@ -55,4 +55,4 @@
 <?php
     // includeing footer
     include 'C:\xampp\htdocs\to-do-app\components\footer.php';
-?>7
+?>
