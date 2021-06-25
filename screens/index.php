@@ -25,27 +25,27 @@
                         $id = $row['id'];
                         if(isset($_POST['edit'])){
                             $_SESSION['id'] = $id;
-                        }
+                        } ?>
 
-                        echo '<tr>
+                       <tr>
                         <td class="col ">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                             </div>
                         </td>
                         <td class="col-8 ">
-                            <p class="text-center fs-4">' . $task . $id .'</p>
+                            <p class="text-center fs-4"> <?php echo $task;?></p>
                         </td>
                         <td class="col-3 ">
-                        <a class="btn btn-secondary href="edit.php?id=<?php echo $row["id"]?>Edit
+                        <a class="btn btn-secondary" href="edit.php?id=<?php echo $row['id']?>">Edit
                       </a>
-                      <a  class="btn btn-danger" href="delete_task.php?id=<?php echo $row["id"]?> Delete
+                      <a class="btn btn-danger" href="edit.php?id=<?php echo $row['id']?>">Delete
                       </a>
 
                          </form>
                             </td>
-                        </tr>';
-                    }
+                        </tr> 
+                   <?php }
 
 
                     ?> 
