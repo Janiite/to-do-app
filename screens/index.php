@@ -20,6 +20,7 @@
                 <table class="table table-hover ">
                     <tbody>
                     <?php 
+                        //Create loop to show all tasks form table tasks
                         while ($row = $result->fetch_assoc()) {
                             $task = $row['task'];
                             $id = $row['id'];
@@ -36,7 +37,7 @@
                                 <td class="col-3 ">
                                     <a class="btn btn-secondary" href="edit.php?id=<?php echo $row['id']?>">Edit</a>
                                     
-                                    <a class="btn btn-danger" href="edit.php?id=<?php echo $row['id']?>">Delete </a>
+                                    <a name = "delete" class="btn btn-danger" href="delete.php?id=<?php echo $row['id']?>">Delete </a>
                                 </td>
                             </tr> 
                     <?php 
@@ -46,10 +47,12 @@
                 </table>
             </table>
         </div>
+            <!--Create new task button-->
             <form action = "../screens/create.php" method ="POST"> 
                 <button type="submit" name = "add" class="btn btn-primary btn-lg"> + create new</button>
             </form>
 </div>
 <?php
+    // includeing footer
     include 'C:\xampp\htdocs\to-do-app\components\footer.php';
-?>
+?>7
