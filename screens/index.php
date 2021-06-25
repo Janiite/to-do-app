@@ -22,7 +22,11 @@
                     <?php 
                     while ($row = $result->fetch_assoc()) {
                         $task = $row['task'];
-                        $id = $_SESSION = $row['id'];
+                        $id = $row['id'];
+                        if(isset($_POST['edit'])){
+                            $_SESSION['id'] = $id;
+                        }
+
                         echo '<tr>
                         <td class="col ">
                             <div class="form-check">
@@ -30,13 +34,13 @@
                             </div>
                         </td>
                         <td class="col-8 ">
-                            <p class="text-center fs-4">' . $task . '</p>
+                            <p class="text-center fs-4">' . $task . $id .'</p>
                         </td>
                         <td class="col-3 ">
-                            <form action = "../screens/edit.php" method = "POST">
-                            <button type="submit" name = "edit" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                            <input type="hidden"  name="user_id" value="'. $id.'">
+                        <a class="btn btn-secondary href="edit.php?id=<?php echo $row["id"]?>Edit
+                      </a>
+                      <a  class="btn btn-danger" href="delete_task.php?id=<?php echo $row["id"]?> Delete
+                      </a>
 
                          </form>
                             </td>
