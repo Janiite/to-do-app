@@ -12,5 +12,5 @@
     // check conection
 
     if (!$conn) {
-    die("Error:" . mysqli_connect_error());
+        die("Error:" . mysqli_connect_error());
     }
