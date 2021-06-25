@@ -1,8 +1,8 @@
 <?php 
+// conecting to database
 require_once "../components/db.php";
-session_start();
 
-
+// Geting id to uptade task
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $esql = "SELECT * FROM  tasks  WHERE id = $id";
@@ -13,27 +13,22 @@ if(isset($_GET['id'])) {
       }
 }
 
+// updating task in tasks table
 if(isset($_POST['update'])) {
-    echo "strādā";
     $id = $_GET['id'];
     $task = $_POST['task'];
     $usql = "UPDATE tasks set task = '$task' WHERE id=$id";
     $result = $conn->query($usql);
-    if (!$result) {
-        die('error');
-        echo "Nav";
-    } else {
-        
-        header("Location:index.php");
-    }
-   
-    
+        if (!$result) {
+            die('error');
+        } 
+    header("Location:index.php");
 }
-
 
 
 ?> 
 
+<!--Edite  view-->
 <!DOCTYPE html>
 <html lang="en">
 
