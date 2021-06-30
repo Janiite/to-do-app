@@ -1,3 +1,11 @@
+<div class="footer-basic">
+        <footer>
+            <p class="copyright">Jana Fedotovska © 2021</p>
+        </footer>
+    </div>
+  
+  
+  
   <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
