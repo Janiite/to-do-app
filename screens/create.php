@@ -13,14 +13,15 @@ if (isset($_POST['create'])) {
     
     if(!empty($task)){
 
-    $sql = "INSERT INTO tasks (task, user_id, status) VALUES ('$task', '$user_id', '$status')";
-    $result = $conn->query($sql);
-    if (!$result) {
-        die('error');
-    }
+        $sql = "INSERT INTO tasks (task, user_id, status) VALUES ('$task', '$user_id', '$status')";
+        $result = $conn->query($sql);
+            if (!$result) {
+                die('error');
+            }
    
    header("Location: ../screens/index.php");
-}}
+    }
+}
 ?>
 
 <!--Create  view-->
