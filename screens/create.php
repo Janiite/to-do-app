@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../components/navbar.php';
 
 // include conection to database
 require_once "../components/db.php";
@@ -40,7 +40,7 @@ if (isset($_POST['create'])) {
 </head>
 
 <body>
-    <div class="box">
+    <div class="box1">
         <h1>Add new task</h1>
         <div class="newTask">
 
@@ -56,6 +56,6 @@ if (isset($_POST['create'])) {
     </div>
 
 
-</body>
-
-</html>
+   <?php // includeing footer
+    include 'C:\xampp\htdocs\to-do-app\components\footer.php'; 
+    ?>
