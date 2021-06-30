@@ -14,8 +14,6 @@
                 die('error');
             }
 
-        
-
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_array($result);
             $_SESSION['logname']= $row['name'];
@@ -32,13 +30,13 @@
             ' ;
             }
 
-          }else {
+        }else {
             $allert = '
             <div class="alert alert-danger" role="alert">
             User not found!
              </div>
             ' ;
-          }
+        }
     }
 ?>
 
