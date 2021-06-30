@@ -112,6 +112,7 @@
     </div>
   </div>
 
-</body>
-
-</html>
+  <?php
+    // includeing footer
+    include 'C:\xampp\htdocs\to-do-app\components\footer.php';
+?>
