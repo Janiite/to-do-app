@@ -3,32 +3,64 @@
 
   $allert = "";
   
-     
-  if(isset($_POST['submit'])) {
-    if($_POST['password']=== $_POST['comfpass']){
-       $email = $_POST['email'];
-       $password = $_POST['password'];
-       $hash = password_hash($password, PASSWORD_DEFAULT);
-      $sql = "INSERT INTO user( email, password) VALUES ('$email', '$hash')";
-      $result = $conn->query($sql);
+  
+  if(isset($_POST['submit'])) { // Subbmit button is pressed
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+    if(!empty($email) || !empty($password) ){   // Chech if the fields is not empty
+
+      if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $csql = "SELECT * FROM user WHERE email = '$email'";
+        $result = $conn->query($csql);
+            if (!$result) {
+                die('error');
+            }
+        if(mysqli_num_rows($result) == 0){
+
+           
+
+      if($_POST['password']=== $_POST['comfpass']){  // Check if passwords match 
+       
+        $hash = password_hash($password, PASSWORD_DEFAULT);   // Password hash
+        $sql = "INSERT INTO user( name, email, password) VALUES ('$name','$email', '$hash')";  // Inserting user data in ussr table
+        $result = $conn->query($sql);
      
           if (!$result) {
             die('error');
           } 
-          header("Location: ../screens/index.php");
+          header("Location: ../screens/login.php");
+        } else {
+          $allert = '
+          <div class="alert alert-danger" role="alert">
+          Passwords do not match!
+           </div>
+          ' ;
+        }
+     } else {
+      $allert = '
+      <div class="alert alert-danger" role="alert">
+      Email already exists! Try logging in
+       </div>
+      ' ;
+     }   
+    }else {
+      $allert = '
+      <div class="alert alert-danger" role="alert">
+      Please use valid email address
+       </div>
+      ' ;
+    }
     } else {
-       $allert = '
+      $allert = '
        <div class="alert alert-danger" role="alert">
-       Passwords do not match!
+       Fill in all fields!
        </div>
        ' ;
-    }
-    
+      }
+
   }
-
-
-
-
 ?> 
 
 
@@ -50,9 +82,15 @@
     <h1>Welcome</h1>
     <div class="regForm">
       <h3>Please register</h3>
-      <?php echo $allert ?>
+      
       <form action = "" method = "POST" class="container mt-5">
-        <div class="mb-3 ">
+      <div class="mb-3">
+        <?php echo $allert ?>
+          <label  for="exampleInputPassword1" class="form-label">Name</label>
+          <input name = "name"type="text" class="form-control" />
+        </div>
+      <div class="mb-3 ">
+          
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input name = "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
@@ -65,7 +103,11 @@
           <input name = "comfpass" type="password" class="form-control" id="exampleInputPassword1" />
         </div>
 
-        <button name = "submit"  type="submit" class="btn btn-primary mt-5">Submit</button>
+        
+        <div class = "mt-5">
+        <button name = "submit"  type="submit" class="btn btn-primary  ">Register</button>
+        <a  class= "mt-5 mx-3" href="login.php">Login</a>
+        </div>
       </form>
     </div>
   </div>
