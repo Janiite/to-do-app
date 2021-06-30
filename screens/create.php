@@ -1,21 +1,26 @@
 <?php
+session_start();
+
 // include conection to database
 require_once "../components/db.php";
 
 //Save tasks when create is clicked 
 if (isset($_POST['create'])) {
+
     $task = $_POST['task'];
     $status = "false";
-    //$user_id = $_POST['user_id'];
+    $user_id = $_SESSION['userid'];
+    
+    if(!empty($task)){
 
-    $sql = "INSERT INTO tasks (task, status) VALUES ('$task', '$status')";
+    $sql = "INSERT INTO tasks (task, user_id, status) VALUES ('$task', '$user_id', '$status')";
     $result = $conn->query($sql);
     if (!$result) {
         die('error');
     }
    
    header("Location: ../screens/index.php");
-}
+}}
 ?>
 
 <!--Create  view-->
