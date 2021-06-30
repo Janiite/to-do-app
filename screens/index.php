@@ -1,12 +1,13 @@
 <?php 
+    
     // includeing nav br
     include 'C:\xampp\htdocs\to-do-app\components\navbar.php';
 
     // includeing conection to database
     require_once '../components/db.php';
-    
+    $user_id = $_SESSION['userid'];
     // conectin to tasks table
-    $sql = "SELECT id, task FROM tasks";
+    $sql = "SELECT id, task FROM tasks WHERE user_id = '$user_id'";
     $result = $conn->query($sql);
     if (!$result) {
         die('error');
