@@ -15,7 +15,7 @@
 ?>
 
 <!--Users task display -->
-<div class="box">
+<div class="box1">
         <div class="userTasks ">
             <table class="table ">
                 <table class="table table-hover ">
@@ -36,9 +36,9 @@
                                     <p class="text-center fs-4"> <?php echo $task;?></p>
                                 </td>
                                 <td class="col-3 ">
-                                    <a class="btn btn-secondary" href="edit.php?id=<?php echo $row['id']?>">Edit</a>
+                                    <a class="btn btn-secondary" href="edit.php?id=<?php echo $row['id']?>">Edit <i class="fas fa-edit"></i></a>
                                     
-                                    <a name = "delete" class="btn btn-danger" href="delete.php?id=<?php echo $row['id']?>">Delete </a>
+                                    <a name = "delete" class="btn btn-primary" href="delete.php?id=<?php echo $row['id']?>">Delete <i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr> 
                     <?php 
@@ -49,8 +49,8 @@
             </table>
         </div>
             <!--Create new task button-->
-            <form action = "../screens/create.php" method ="POST"> 
-                <button type="submit" name = "add" class="btn btn-primary btn-lg"> + create new</button>
+            <form action = "../screens/create.php" method ="POST" > 
+                <button type="submit" name = "add" class="btn btn-primary btn-lg mb-3"> <i class="fas fa-plus-circle"></i> create new</button>
             </form>
 </div>
 <?php
