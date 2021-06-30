@@ -1,5 +1,6 @@
 <?php 
-session_start();
+require_once '../components/navbar.php';
+
 // session check
 if (!isset($_SESSION['userid'])){
     header("Location:login.php");
@@ -52,7 +53,7 @@ if(isset($_POST['update'])) {
 </head>
 
 <body>
-    <div class="box">
+    <div class="box1">
         <h1>Edit task</h1>
         <div class="newTask">
 
@@ -68,5 +69,7 @@ if(isset($_POST['update'])) {
     </div>
 
 
-</body>
-</html>
+<?php 
+    // includeing footer
+    include 'C:\xampp\htdocs\to-do-app\components\footer.php';
+?>
