@@ -1,4 +1,10 @@
 <?php 
+session_start();
+// session check
+if (!isset($_SESSION['userid'])){
+    header("Location:login.php");
+}
+
 // conecting to database
 require_once "../components/db.php";
 
@@ -10,12 +16,13 @@ if(isset($_GET['id'])) {
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_array($result);
         $task = $row['task'];
+
       }
 }
 
 // updating task in tasks table
 if(isset($_POST['update'])) {
-    $id = $_GET['id'];
+    
     $task = $_POST['task'];
     $usql = "UPDATE tasks set task = '$task' WHERE id=$id";
     $result = $conn->query($usql);
