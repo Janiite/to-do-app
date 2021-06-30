@@ -29,7 +29,7 @@
                             <tr>
                                 <td class="col ">
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input name = "done" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                                     </div>
                                 </td>
                                 <td class="col-8 ">
