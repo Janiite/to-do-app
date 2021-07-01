@@ -11,13 +11,13 @@
 
     if(!empty($email) || !empty($password) ){   // Chech if the fields is not empty
 
-      if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      if (filter_var($email, FILTER_VALIDATE_EMAIL)) {    // e-mail check
         $csql = "SELECT * FROM user WHERE email = '$email'";
         $result = $conn->query($csql);
             if (!$result) {
                 die('error');
             }
-        if(mysqli_num_rows($result) == 0){
+        if(mysqli_num_rows($result) == 0){  // chech if user already exist
 
            
 
