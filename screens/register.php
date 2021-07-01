@@ -78,7 +78,7 @@
 </head>
 
 <body>
-  <div class="box">
+  <div class="box1">
     <h1>Welcome</h1>
     <div class="regForm">
       <h3>Please register</h3>
