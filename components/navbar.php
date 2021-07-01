@@ -1,8 +1,11 @@
 <?php session_start();
 
+//check sesion
 if (!isset($_SESSION['userid'])){
     header("Location:login.php");
 }
+
+// Session destroy
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: ../screens/login.php");
