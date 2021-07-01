@@ -1,10 +1,10 @@
 <?php 
-    require_once '../components/db.php';
+    require_once '../components/db.php'; // conection to db
     
     $allert = "";
 
     if (isset($_POST['login'])) {
-        session_start();
+        session_start();            // start sesion when log in
         $logemail = $_POST['logemail'];
         $logpassword = $_POST['logpassword'];
 
@@ -14,12 +14,12 @@
                 die('error');
             }
 
-        if (mysqli_num_rows($result) == 1) {
+        if (mysqli_num_rows($result) == 1) {   // check if e-mail exist
             $row = mysqli_fetch_array($result);
-            $_SESSION['logname']= $row['name'];
+            $_SESSION['logname']= $row['name'];      //save user info in sessin 
             $_SESSION['logemail'] = $row['email'];
             $user_id = $_SESSION['userid']= $row['user_id'];
-            if (password_verify($logpassword, $row['password'])) {
+            if (password_verify($logpassword, $row['password'])) {   // password check
                 
                header("Location: ../screens/index.php");
             }else {
